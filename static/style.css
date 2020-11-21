@@ -1,0 +1,91 @@
+     body {
+            font-family: sans-serif;
+            background-color: #eeeeee;
+        }
+
+        .file-upload {
+            background-color: #ffffff;
+            width: auto;
+            margin: 0 auto;
+            padding: 0 5px;
+
+        }
+
+        .file-upload-content {
+            display: none;
+            text-align: center;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            outline: none;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .image-upload-wrap {
+
+            border: 1px dashed #d1d1d1;
+            position: relative;
+            height: 300px;
+        }
+
+        .image-dropping,
+        .image-upload-wrap:hover {
+            background-color: #ebebeb;
+            border: 1px dashed #ffffff;
+            cursor: pointer;
+        }
+
+        .image-title-wrap {
+            padding: 15px 15px 15px;
+            color: rgb(248, 248, 248);
+        }
+
+        .drag-text {
+            text-align: center;
+        }
+
+        .drag-text h3 {
+            font-weight: 100;
+            color: #aaaaaa;
+            padding: 100px 60px;
+        }
+
+        .file-upload-image {
+            max-height: 200px;
+            max-width: 200px;
+            margin: auto;
+            padding: 20px;
+            border: 1px rgb(223, 223, 223) solid;
+        }
+
+        .remove-image {
+            width: 200px;
+            margin: 0;
+            color: #fff;
+            background: #f16556;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all .2s ease;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .remove-image:hover {
+            background: #c13b2a;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        .remove-image:active {
+            border: 0;
+            transition: all .2s ease;
+        }

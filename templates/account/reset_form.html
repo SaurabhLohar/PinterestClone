@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block body %}
+
+<section class="hero is-small mt-5" style="background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.etsystatic.com/24535918/r/il/c1fbba/2528400869/il_1140xN.2528400869_21mt.jpg');">
+            <div class="hero-body">
+                <div class="container ">
+                    <form method="POST" >
+                        {% csrf_token %}
+                    
+                    <div class="card column is-half is-offset-one-quarter mt-3 mb-3 p-6 ">
+                        <div class="field p-3">
+                            <h2 class="has-text-centered is-size-2">Reset Passoword</h2>
+                            <p class="pb-5 p-1">Please enter your password twice so we can verify you typed it in correctly.</p>
+                            <div class="control">
+                                {% render_field form.new_password1 class="input p-5 is-rounded" type="password" placeholder="new password"%}
+                            </div>
+                        </div>
+                         <div class="field p-3">
+                            <div class="control">
+                                {% render_field form.new_password2 class="input p-5 is-rounded" type="password" placeholder="repeat new password"%}
+                            </div>
+                        </div>
+
+                        <div class="control p-3">
+                            <button style="width: 100%;" type="submit" class=" is-rounded p-5 button is-danger">Update Passoword</button>
+                        </div>
+                       
+
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+
+{% endblock body %}

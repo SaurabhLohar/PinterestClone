@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pinterest {% block title %}
+        {% endblock title %}</title>
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+<style type="text/css">
+    a {
+        text-decoration: none!important;
+       }
+    *{
+        font-family: cursive!important;
+    }
+</style>
+
+{% block head %}
+    
+{% endblock head %}
+
+</head>
+
+<body class="container">
+  <div class="notification has-background-white-bis">
+
+{% include 	'navbar.html' %}
+
+    {% block body %}
+    
+    {% endblock body %}
+
+</div>
+   <footer class="has-background-light is-fixed-bottom p-5">
+            <div class="content is-danger has-text-centered">
+                <p>
+                    <strong>Pinterest-Clone</strong> by <a target="_blank" href="https://saurabhlohar.github.io/">Saurabh Lohar</a>. This website is created for learning purpose.</p>
+            </div>
+        </footer>
+
+        <script>
+            $(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+        </script>
+
+        {% block scripts %}
+            
+        {% endblock scripts %}
+
+</body>
+
+</html>

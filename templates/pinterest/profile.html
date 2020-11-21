@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block body %}
+<section class="hero is-small has-background-white-bis mt-5" style="background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.etsystatic.com/24535918/r/il/c1fbba/2528400869/il_1140xN.2528400869_21mt.jpg');">
+    <div class="hero-body">
+        <div class="container">
+            <div>
+                <div class="card column is-10 is-offset-1 t-3 mb-3">
+                    <div class="field p-3">
+                        <h2 class="has-text-centered  is-size-3"> <span style="float: left;" class="is-size-5"><a href="{% url 'home' %}" class="button is-info is-outlined">
+                                            <strong>Back</strong>
+                                        </a></span><span class="has-background-danger" style="color:white;font-family: cursive;"> @{{request.user}}</span>
+
+<span style="float: right;"><a href="{% url 'account-setting' %}" class="button is-info is-outlined">
+                                            <strong>Account</strong>
+                                        </a>
+
+                                    </h2>
+                  </div>
+                    <hr>
+                    <p class="has-text-centered"> <span class="title is-size-5">{{count}} Pin(s) in your gallary</span></p>
+                    <div class="columns is-multiline mt-5 p-5 has-background-light ">
+                        {% for pin in pins %}
+                        <div class="has-text-centered column is-3 is-3-fullhd is-3-desktop is-6-tablet is-12-mobile">
+                            <a href="/my-pin/{{pin.sno}}/" class="box">
+                                <img src="{{pin.image.url}}" width="150" alt="" class="p-1">
+                            </a>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

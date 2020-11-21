@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block body %}
+
+
+ <section class="hero is-small " style="background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.etsystatic.com/24535918/r/il/c1fbba/2528400869/il_1140xN.2528400869_21mt.jpg');">
+            <div class="hero-body">
+                <div class="container ">
+					<form method="post">
+						{% csrf_token %}
+                    <div class="card column is-half is-offset-one-quarter mt-3 mb-3 p-6	">
+                        <div class="field p-3">
+                            <h2 class="has-text-centered pb-6 is-size-1">Welcome to Pinterest</h2>
+                            <div class="control">
+                                {% render_field form.username class="input p-5 is-rounded" type="text" placeholder="e.g Alex Smith" %}
+                            </div>
+                            {% for error in form.username.errors %}
+            <p class="help is-danger">{{error}}</p>
+            {% endfor %}
+                        </div>
+
+                        <div class="field p-3">
+
+                            <div class="control">
+                                {% render_field form.email class="input p-5 is-rounded" type="email" placeholder="email" %}
+                            </div>
+                            {% for error in form.email.errors %}
+            <p class="help is-danger">{{error}}</p>
+            {% endfor %}
+                        </div>
+                        <div class="field p-3">
+
+                            <div class="control">
+                                {% render_field form.password1 class="input p-5 is-rounded" type="password" placeholder="password" %}
+                            </div>
+                            {% for error in form.password1.errors %}
+            <p class="help is-danger">{{error}}</p>
+            {% endfor %}
+                        </div>
+                        <div class="field p-3">
+
+                            <div class="control">
+                                {% render_field form.password2 class="input p-5 is-rounded" type="password" placeholder="repeat password" %}
+                            </div>
+                            {% for error in form.password2.errors %}
+            <p class="help is-danger">{{error}}</p>
+            {% endfor %}
+                        </div>
+
+                        <div class="control p-3">
+                            <button style="width: 100%;" class=" is-rounded p-5 button is-danger">Sign Up</button>
+                        </div>
+                        <div class="control p-3 has-text-centered">
+                            <a class="is-size-6" href="{% url 'login' %}"> <strong>Already on Pinterest? Log-in</strong> </a>
+                        </div>
+
+                    </div>
+                </form>
+                </div>
+            </div>
+        </section>
+
+
+
+    
+
+{% endblock body %}

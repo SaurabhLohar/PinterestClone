@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block body %}
+<section class="hero is-small has-background-light mt-5" style="background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.etsystatic.com/24535918/r/il/c1fbba/2528400869/il_1140xN.2528400869_21mt.jpg');">
+    <div class=" hero-body">
+        <div class="container ">
+            <div class="card column is-three-fifths is-offset-one-fifth mt-3 mb-3 p-3">
+                <div class="column">
+                	  <p class="bd-notification is-info navbar-menu has-text-centered">
+                        <div class="has-text-centered">
+                            <div class="buttons">
+                                <button class="button is-danger">
+                                    <strong style="text-transform: capitalize;">@{{user |slice:1}}</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </p>
+                    <form method="post" enctype="multipart/form-data" validate>
+                        {% csrf_token %}
+                        <p class="bd-notification is-info navbar-menu">
+                            <div class="navbar-end">
+                                <div class="navbar-item">
+                                    <div class="buttons">
+                                        <button type="submit" class="button is-primary">
+                                            <strong>Save</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </p>
+                        <div class="columns is-desktop pt-4">
+                            <div class="column">
+                                <p class="bd-notification is-info">
+                                    <div class="field">
+                                        <div class="file is-boxed has-name">
+                                            <div class="file-upload">
+                                                <div class="image-upload-wrap">
+                                                   <!--  <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" style="height:100%;" /> -->
+                                                   {% render_field form.image class="file-upload-input" onchange="readURL(this);"   placeholder="e.g Alex Smith" accept="image/*" style="height:100%" required="true" %}
+                                                    <div class="drag-text">
+                                                        <h3>Drag and drop or click to upload</h3>
+                                                        <span>File should be smaller than 2mb</span>
+                                                    </div>
+                                                </div>
+                                                <div class="file-upload-content">
+                                                    <img class="file-upload-image" src="#" alt="your image" />
+                                                    <div class="image-title-wrap">
+                                                        <button type="button" onclick="removeUpload()" class="button is-danger file-upload-btn">Remove</button>
+                                                    </div>
+                                                </div>
+                                                <button class=" button is-info file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )" style="width: 100%;">Add
+                                                    Image</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p class="bd-notification is-info">
+                                    <div class="control">
+                                         {% render_field form.title class="input p-5 is-rounded"  placeholder="Title" %}
+                                    </div>
+                                </p>
+                                <p class="bd-notification pt-4 pb-4">
+                                    <span class="tag is-danger is-rounded p-3 is-medium">{{user|make_list|first}}</span>
+                                    <span>{{user}}</span>
+                                </p>
+                                <p class="bd-notification is-info">
+                                    <div class="control">
+                                        {% render_field form.about class="textarea is-rounded" rows="5" placeholder="Tell Everyone what is your pin about" required="true"%}
+                                   
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
+
+{% block scripts %}
+  
+  <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.image-upload-wrap').hide();
+
+                        $('.file-upload-image').attr('src', e.target.result);
+                        $('.file-upload-content').show();
+
+                        $('.image-title').html(input.files[0].name);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+
+                } else {
+                    removeUpload();
+                }
+            }
+
+            function removeUpload() {
+                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+                $('.file-upload-content').hide();
+                $('.image-upload-wrap').show();
+            }
+            $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+            });
+        </script>
+
+{% endblock scripts %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="hero is-small has-background-light">
+    <div class=" hero-body">
+         <span style="float: left;"> <button type="button" onClick="javascript:history.go(-1);" class="button is-info is-hoverable">
+                                            Back
+                                        </button></span>
+        <div class="container">
+            <div class="card column is-three-fifths is-offset-one-fifth mt-3 mb-3 p-3">
+
+                <div class="column">
+                    
+                    <p class="bd-notification is-info navbar-menu has-text-centered">
+                        <div class="has-text-centered">
+                            <div class="buttons">
+                                <button class="button is-danger">
+                                    <strong style="text-transform: capitalize;">@{{details.author |slice:1}}</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </p>
+                    <div class="columns is-desktop pt-4">
+                        <div class="column">
+                            <p class="bd-notification is-info">
+                                <div class="field">
+                                    <div class="card">
+                                        <div class="card-image p-2">
+                                            <figure class="image">
+                                            	<a href="{{details.image.url}}">
+                                                <img style="height: auto;" src="{{details.image.url}}" alt="Placeholder image">
+                                            </a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                            <div class="navbar-end">
+                           <div class="buttons is-center">
+                                        <a href="{{details.image.url}}" class="button is-dark is-outlined end">
+                                            <strong>Download</strong>
+                                        </a>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="column">
+                        
+                            <p class="bd-notification pt-4 pb-4">
+                                <h3 class="is-size-4"> <strong style="text-transform: capitalize;"> {{details.title}}</strong></h3>
+                                <h3 class="is-size-6">About : {{details.about}}</h3>
+                            </p>
+                            <p>&nbsp;</p>
+                            <p class="bd-notification is-info">
+                                <div class="control">
+                                    <h3 class="is-size-7" style="border-bottom: 2px rgb(168, 168, 168) solid;">
+                                        <strong>
+                                            Comments
+                                        </strong>
+                                    </h3>
+                                </div>
+                            </p>
+                            <p class="bd-notification is-info pt-4">
+                                <article class=" media">
+                                    <div class="media-content is-rounded p-1">
+                                        {% for c in comments %}
+                                        <div class="box content has-background-white p-2">
+                                            <p>
+                                                <strong class="has-text-danger">{{c.user}}</strong>
+                                                <small>{{c.timestamp }}</small>
+                                                <br>
+                                                {{c.comment}}
+                                            </p>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </article>
+                            </p>
+                            <p class="bd-notification is-info">
+                                <form action="/comment/" method="post">
+                                    {% csrf_token %}
+                                    <article class="media">
+                                        <div class="media-content">
+                                            <div class="field">
+                                                <p class="control">
+                                                    <input class="input p-4 is-rounded" type="text" placeholder="e.g Alex Smith" name="comment" required="true">
+                                                    <input type="hidden" name="postSno" value="{{details.sno}}">
+                                                </p>
+                                            </div>
+                                            <div class="buttons is-right">
+                                                <button type="submit" class="button is-danger">
+                                                    <strong>Submit</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

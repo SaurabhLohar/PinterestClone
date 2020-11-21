@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block body %}
+<section class="hero is-small " style="background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.etsystatic.com/24535918/r/il/c1fbba/2528400869/il_1140xN.2528400869_21mt.jpg');">
+    <div class="hero-body">
+    	
+         <span style="float: left;"> <button type="button" onClick="javascript:history.go(-1);" class="button is-info is-hoverable">
+                                            Back
+                                        </button></span>
+        <div class="container ">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="card column is-half is-offset-one-quarter mt-3 mb-3 p-6	">
+                    <div class="field p-3">
+                        <h2 class="has-text-centered pb-4 is-size-2">Your Details</h2>
+                        <div class="control">
+                            {% render_field form.first_name class="input p-5 is-rounded" type="text" placeholder="First name" %}
+                        </div>
+                        {% for error in form.first_name.errors %}
+            <p class="help is-danger">{{error}}</p>
+            {% endfor %}
+                    </div>
+                    <div class="field p-3">
+                        <div class="control">
+                            {% render_field form.last_name class="input p-5 is-rounded" type="text" placeholder="Last name" %}
+                        </div>
+                        {% for error in form.last_name.errors %}
+            <p class="help is-danger">{{error}}</p>
+            {% endfor %}
+                    </div>
+
+                    <div class="field p-3">
+                        <div class="control">
+                            {% render_field form.email class="input p-5 is-rounded" type="email" placeholder="password" %}
+                        </div>
+                    </div>
+                    <div class="field p-3">
+
+                            <div class="control">
+                                <a class="is-link is-size-6" href="{% url 'password_change' %}"><strong>Change password</strong></a>
+                            </div>
+                        </div>
+                    <div class="control p-3">
+                        <button style="width: 100%;" type="submit" class=" is-rounded p-5 button is-danger">Change</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock body %}
