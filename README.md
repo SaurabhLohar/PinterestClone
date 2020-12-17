@@ -1,18 +1,18 @@
 # PinterestClone
-I made an django web app of pinterest
 
-Where you can Register your account and upload images,comment on images.
+I made an **Django** web app of **Pinterest**
 
-Login and registration functionality also added.
+- Where you can Register your account and upload images,comment on images.
 
-To add css classes,html attributes to form fields i used "django-widget-tweaks"
+- Login and registration functionality also added.
 
-Installation
+- To add css classes,html attributes to form fields i used ***"django-widget-tweaks"***
+
+#### Installation
 You can get Django Widget Tweaks by using pip:
 
-$ pip install django-widget-tweaks
+>$ pip install django-widget-tweaks
 
 
 
-
-Thank You!
+## Thank You! :)
