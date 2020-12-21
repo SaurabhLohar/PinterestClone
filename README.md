@@ -1,6 +1,6 @@
-# PinterestClone
+# WallStudios
 
-I made an **Django** web app of **Pinterest**
+I made an **Django** web app of **WallStudios** which is clone of **Pinterest**
 
 - Where you can Register your account and upload images,comment on images.
 
